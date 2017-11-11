@@ -5,6 +5,9 @@ import CompletedTask from './CompletedTask';
 import '../assets/css/App.css';
 
 class ToDoApp extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
       <div className="App">
@@ -17,7 +20,7 @@ class ToDoApp extends Component {
         </div>	
         <div className="col-md-4">
         	<h3>To Do List</h3>
-        		<ToDoList />
+        		<ToDoList tasks = {this.props.tasks}/>
         </div>	
         <div className="col-md-4">
         	<h3>Completed Tasks</h3>
