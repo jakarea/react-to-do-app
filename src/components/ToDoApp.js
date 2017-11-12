@@ -7,6 +7,14 @@ import '../assets/css/App.css';
 class ToDoApp extends Component {
   constructor(props){
     super(props);
+    this.state = { tasks:this.props.tasks};
+    this.updateTasks = this.updateTasks.bind(this);
+  }
+
+  updateTasks(task){
+      var updatedTasks = this.state.tasks;
+      updatedTasks.unshift(task);
+      this.setState({tasks:updatedTasks});
   }
   render() {
     return (
@@ -14,14 +22,17 @@ class ToDoApp extends Component {
         <header className="App-header">
           <h1 className="App-title">To Do App Using ReactJs And Local Storage</h1>
         </header>
+
         <div className="col-md-4">
         	<h3>Add New Task</h3>
-        	<AddNewTask />
+        	<AddNewTask updateTasks = {this.updateTasks}/>
         </div>	
+
         <div className="col-md-4">
         	<h3>To Do List</h3>
-        		<ToDoList tasks = {this.props.tasks}/>
-        </div>	
+        		<ToDoList tasks = {this.state.tasks}/>
+        </div>
+
         <div className="col-md-4">
         	<h3>Completed Tasks</h3>
         	<CompletedTask/>

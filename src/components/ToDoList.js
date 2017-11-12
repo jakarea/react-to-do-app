@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ToDoList extends Component{
-        constructor(props){
-        super(props);
+class ToDoList extends React.Component{
+        constructor(){
+        super();
         }
 	render(){
 		return(
