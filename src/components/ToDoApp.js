@@ -9,6 +9,7 @@ class ToDoApp extends Component {
     super(props);
     this.state = { tasks:this.props.tasks};
     this.updateTasks = this.updateTasks.bind(this);
+    this.removeTask = this.removeTask.bind(this);
   }
 
   updateTasks(task){
@@ -16,6 +17,13 @@ class ToDoApp extends Component {
       updatedTasks.unshift(task);
       this.setState({tasks:updatedTasks});
   }
+
+  removeTask(task){
+      var updatedTasks = this.state.tasks;
+      updatedTasks.shift(task);
+      this.setState({tasks:updatedTasks});
+  }
+
   render() {
     return (
       <div className="App">
@@ -30,7 +38,7 @@ class ToDoApp extends Component {
 
         <div className="col-md-4">
         	<h3>To Do List</h3>
-        		<ToDoList tasks = {this.state.tasks}/>
+        		<ToDoList tasks = {this.state.tasks} remove= {this.removeTask}/>
         </div>
 
         <div className="col-md-4">

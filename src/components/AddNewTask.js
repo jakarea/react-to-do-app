@@ -16,7 +16,7 @@ class AddNewTask extends Component{
 
 	render(){
 		return(
-			<form onSubmit={this.handleNewTask} name="deki">
+			<form onSubmit={this.handleNewTask} >
 				<input type="text" className="form-control" ref="task" />
 				<input type="submit" className="btn btn-primary btn-sm form-control" value="Add Task" />
 			</form>	
