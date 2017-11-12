@@ -16,14 +16,19 @@ class ToDoApp extends Component {
       var updatedTasks = this.state.tasks;
       updatedTasks.unshift(task);
       this.setState({tasks:updatedTasks});
+      this.updateLocalStorage(updatedTasks);
   }
 
   removeTask(task){
       var updatedTasks = this.state.tasks;
       updatedTasks.shift(task);
       this.setState({tasks:updatedTasks});
+      this.updateLocalStorage(updatedTasks);
   }
 
+  updateLocalStorage(updatedTasks){
+    localStorage.setItem('storedTasks',JSON.stringify(updatedTasks));
+  }
   render() {
     return (
       <div className="App">
