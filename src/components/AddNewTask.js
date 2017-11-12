@@ -9,7 +9,7 @@ class AddNewTask extends Component{
 
 	handleNewTask(e){
 		e.preventDefault();
-		this.setState({task: this.refs.task.value});
+		//this.setState({task: this.refs.task.value});
 		this.props.updateTasks(this.refs.task.value);
 		this.refs.task.value= '';
 	}

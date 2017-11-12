@@ -7,28 +7,43 @@ import '../assets/css/App.css';
 class ToDoApp extends Component {
   constructor(props){
     super(props);
-    this.state = { tasks:this.props.tasks};
+    this.state = { tasks:this.props.tasks, finish: this.props.finish};
     this.updateTasks = this.updateTasks.bind(this);
     this.removeTask = this.removeTask.bind(this);
+    this.finishTask = this.finishTask.bind(this);
   }
 
   updateTasks(task){
-      var updatedTasks = this.state.tasks;
-      updatedTasks.unshift(task);
-      this.setState({tasks:updatedTasks});
-      this.updateLocalStorage(updatedTasks);
+    var updatedTasks = this.state.tasks;
+    updatedTasks.unshift(task);
+    this.setState({tasks:updatedTasks});
+    this.updateLocalStorage(updatedTasks);
   }
 
   removeTask(task){
-      var updatedTasks = this.state.tasks;
-      updatedTasks.shift(task);
-      this.setState({tasks:updatedTasks});
-      this.updateLocalStorage(updatedTasks);
+    var updatedTasks = this.state.tasks;
+    updatedTasks.splice(updatedTasks.indexOf(task),1);
+    this.setState({tasks:updatedTasks});
+    this.updateLocalStorage(updatedTasks);
+    this.finishTask(task);
+  }
+
+  finishTask(task){
+    var finishTasks = this.state.finish;
+    finishTasks.unshift(task);
+    this.setState({finish:finishTasks});
+    this.finishLocalStorage(finishTasks);
+    console.log(finishTasks);
   }
 
   updateLocalStorage(updatedTasks){
     localStorage.setItem('storedTasks',JSON.stringify(updatedTasks));
   }
+
+  finishLocalStorage(finishTasks){
+    localStorage.setItem('finishTasks',JSON.stringify(finishTasks));
+  }
+  
   render() {
     return (
       <div className="App">
@@ -43,12 +58,12 @@ class ToDoApp extends Component {
 
         <div className="col-md-4">
         	<h3>To Do List</h3>
-        		<ToDoList tasks = {this.state.tasks} remove= {this.removeTask}/>
+        		<ToDoList tasks = {this.state.tasks} remove= {this.removeTask} />
         </div>
 
         <div className="col-md-4">
         	<h3>Completed Tasks</h3>
-        	<CompletedTask/>
+        	<CompletedTask finishes = {this.state.finish} />
         </div>	
       </div>
 
