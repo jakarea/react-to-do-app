@@ -38,4 +38,4 @@ my-app/
 
 ## Screenshort
 
-![Screenshort](/src/assets/imgs/Screenshort.png?raw=true "Screenshort")
+![Screenshort](/react-to-do-app/src/assets/imgs/Screenshot.png "Screenshort")
