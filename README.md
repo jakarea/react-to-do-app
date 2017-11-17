@@ -38,4 +38,4 @@ my-app/
 
 ## Screenshort
 
-![Screenshort](/react-to-do-app/src/assets/imgs/Screenshot.png "Screenshort")
+![Screenshort](https://raw.githubusercontent.com/jakarea/react-to-do-app/master/src/assets/imgs/Screenshot.png)
